@@ -1,0 +1,126 @@
+<!-- Start Item Details -->
+<section class="item-details section">
+  <div class="container">
+    <div class="top-area">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="product-images">
+            <main id="gallery">
+              <div class="main-img">
+                <img src="{{ url }}" id="current" alt="#" />
+              </div>
+              <div class="images">
+                <img
+                  *ngFor="let item of listAttachement"
+                  src="{{ item.url }}"
+                  class="img"
+                  alt="#"
+                  (click)="getUrl(item.url!)"
+                />
+              </div>
+            </main>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="product-info">
+            <span class="category" style="">
+              {{ product.productCategory.libelle }}
+            </span>
+            <h2 class="title">{{ product.libelle }}</h2>
+
+            <h3 class="price">{{ product.price }} {{ product.currency }}</h3>
+            <p class="info-text">
+              {{ product.description }}
+            </p>
+            <div class="row">
+              <form (ngSubmit)="onSubmit(template)">
+                <div class="col-lg-4 col-md-4 col-12">
+                  <div class="form-group quantity">
+                    <label for="color">Quantité</label>
+                    <select
+                      *ngIf="quantity < 10"
+                      class="form-control"
+                      id="sorting"
+                      [(ngModel)]="cart.quantity"
+                      [ngModelOptions]="{ standalone: true }"
+                      (ngModelChange)="getQuantity($event)"
+                    >
+                      <option
+                        *ngFor="let item of qutantiteList"
+                        [ngValue]="item.quantite"
+                      >
+                        {{ item.quantite }}
+                      </option>
+                    </select>
+                    <div class="example-input">
+                      <input
+                        class="form-control"
+                        *ngIf="quantity == 10"
+                        type="number"
+                        nz-input
+                        nzSize="large"
+                        [(ngModel)]="cart.quantity"
+                        name="quantity"
+                        id="quantity"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-content">
+                  <div class="row align-items-end">
+                    <div class="col-lg-4 col-md-4 col-12">
+                      <div class="button cart-button">
+                        <button type="submit" class="btn" style="width: 100%">
+                          <span
+                            *ngIf="isLoading === true"
+                            class="spinner-grow spinner-grow-sm"
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
+                          Ajouter au panier
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12">
+                      <div class="wish-button">
+                        <button
+                          (click)="addWish(product.id!, templateWish)"
+                          class="btn"
+                        >
+                          <i class="lni lni-heart"></i>Envies
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Item Details -->
+<ng-template #template let-notification>
+  <div class="ant-notification-notice-content">
+    <div>
+      <div class="ant-notification-notice-message">Notification</div>
+      <div class="ant-notification-notice-description">
+        Veuillez sélectionner la quantité !
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- End Item Details -->
+<ng-template #templateWish let-notification>
+  <div class="ant-notification-notice-content">
+    <div>
+      <div class="ant-notification-notice-message">Notification</div>
+      <div class="ant-notification-notice-description">
+        Veuillez sélectionner la quantité !
+      </div>
+    </div>
+  </div>
+</ng-template>

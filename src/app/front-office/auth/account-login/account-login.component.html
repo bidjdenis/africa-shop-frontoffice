@@ -1,0 +1,96 @@
+<!-- Start Account Login Area -->
+<div class="account-login section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+        <!--begin::Alert-->
+        <div
+          *ngIf="alert.isAlert"
+          class="alert alert-warning d-flex align-items-center p-5"
+        >
+          <!--begin::Icon-->
+          <i class="ki-duotone ki-shield-slash fs-2hx text-gray-500 me-4"
+            ><span class="path1"></span><span class="path2"></span
+          ></i>
+          <!--end::Icon-->
+
+          <!--begin::Wrapper-->
+          <div class="d-flex flex-column">
+            <!--begin::Title-->
+            <h4 class="mb-1 text-dark">{{ alert.title }}</h4>
+            <!--end::Title-->
+
+            <!--begin::Content-->
+            <span class="text-gray-700">{{ alert.description }}</span>
+            <!--end::Content-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Alert-->
+        <form
+          class="card login-form"
+          [formGroup]="formLogin"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="card-body">
+            <div class="title">
+              <h3>Connexion</h3>
+            </div>
+            <div class="form-group input-group">
+              <label for="reg-fn">N'om d'utilisateur</label>
+              <input
+                class="form-control"
+                [autocomplete]="false"
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Nom d'utilisateur..."
+                formControlName="username"
+                required
+              />
+            </div>
+            <div class="form-group input-group">
+              <label for="reg-fn">Mot de passe</label>
+              <input
+                class="form-control"
+                [autocomplete]="false"
+                #password
+                class="form-control"
+                type="password"
+                placeholder="Mot de passe"
+                formControlName="password"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="valid-button spin">
+              <a
+                (click)="onSubmit()"
+                class="btn btn-primary col-12 mt-10"
+                snbButton
+                textValue="Se Connecter"
+              >
+                <span
+                  *ngIf="isLoading === true"
+                  class="spinner-grow spinner-grow-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span
+                >Se connecté</a
+              >
+            </div>
+
+            <!-- <div class="button">
+              <button class="btn" type="submit">Login</button>
+            </div> -->
+            <p class="outer-link">
+              Avez vous déja un compte?
+              <a routerLink="/register">Créer un compte ici</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Account Login Area -->

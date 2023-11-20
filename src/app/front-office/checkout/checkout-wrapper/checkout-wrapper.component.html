@@ -1,0 +1,223 @@
+<!--====== Checkout Form Steps Part Start ======-->
+
+<section class="checkout-wrapper section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="checkout-steps-form-style-1">
+          <ul id="accordionExample">
+            <li>
+              <h6
+                class="title"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="true"
+                aria-controls="collapseThree"
+              >
+                Informations personnelles
+              </h6>
+              <section
+                class="checkout-steps-form-content collapse show"
+                id="collapseThree"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <form [formGroup]="valitionForm" nz-form>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="single-form form-default">
+                        <label>Nom </label>
+                        <div class="row">
+                          <div class="col-md-6 form-input form">
+                            <nz-form-item>
+                              <nz-form-control
+                                nzErrorTip="Erreur sur le champs !"
+                              >
+                                <input
+                                  type="text"
+                                  nz-input
+                                  formControlName="firstname"
+                                  placeholder="Nom"
+                                /> </nz-form-control
+                            ></nz-form-item>
+                          </div>
+                          <div class="col-md-6 form-input form">
+                            <nz-form-item>
+                              <nz-form-control
+                                nzErrorTip="Erreur sur le champs !"
+                              >
+                                <input
+                                  type="text"
+                                  nz-input
+                                  formControlName="name"
+                                  placeholder="Prenom"
+                                /> </nz-form-control
+                            ></nz-form-item>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="single-form form-default">
+                        <label>Adresse mail</label>
+                        <div class="form-input form">
+                          <nz-form-item>
+                            <nz-form-control
+                              nzErrorTip="Erreur sur le champs !"
+                            >
+                              <input
+                                type="email"
+                                nz-input
+                                formControlName="email"
+                                placeholder="Adresse mail"
+                              /> </nz-form-control
+                          ></nz-form-item>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="single-form form-default">
+                        <label>Numéro de téléphone</label>
+                        <div class="form-input form">
+                          <nz-form-item>
+                            <nz-form-control
+                              nzErrorTip="Erreur sur le champs !"
+                            >
+                              <input
+                                type="text"
+                                nz-input
+                                formControlName="telephone"
+                                placeholder="Numéro de téléphone"
+                              /> </nz-form-control
+                          ></nz-form-item>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="single-form form-default">
+                        <label>Adresse postale </label>
+                        <div class="form-input form">
+                          <nz-form-item>
+                            <nz-form-control
+                              nzErrorTip="Erreur sur le champs !"
+                            >
+                              <input
+                                type="text"
+                                nz-input
+                                formControlName="adress"
+                                placeholder="Nom de la rue"
+                              /> </nz-form-control
+                          ></nz-form-item>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="single-form form-default">
+                        <label>Nom de l'entreprise</label>
+                        <div class="form-input form">
+                          <nz-form-item>
+                            <nz-form-control
+                              nzErrorTip="Erreur sur le champs !"
+                            >
+                              <input
+                                type="text"
+                                nz-input
+                                formControlName="entrepriseName"
+                                placeholder="Nom de l'entreprise"
+                              /> </nz-form-control
+                          ></nz-form-item>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="single-form form-default">
+                        <label>Code postal</label>
+                        <div class="form-input form">
+                          <nz-form-item>
+                            <nz-form-control
+                              nzErrorTip="Erreur sur le champs !"
+                            >
+                              <input
+                                type="text"
+                                nz-input
+                                formControlName="code postal"
+                                placeholder="Post Code"
+                              /> </nz-form-control
+                          ></nz-form-item>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="single-form form-default">
+                        <label>Pays</label>
+                        <div class="select-items">
+                          <nz-form-item>
+                            <nz-form-control
+                              nzErrorTip="Erreur sur le champs !"
+                            >
+                              <select
+                                nz-input
+                                formControlName="idPays"
+                                class="form-control"
+                              >
+                                <option
+                                  *ngFor="let item of listCountry"
+                                  [value]="item.id"
+                                >
+                                  {{ item.libelle }}
+                                </option>
+                              </select>
+                            </nz-form-control></nz-form-item
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="single-form form-default">
+                        <label>Ville</label>
+                        <div class="form-input form">
+                          <nz-form-item>
+                            <nz-form-control
+                              nzErrorTip="Erreur sur le champs !"
+                            >
+                              <input
+                                type="text"
+                                nz-input
+                                formControlName="ville"
+                                placeholder="Ville"
+                              /> </nz-form-control
+                          ></nz-form-item>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </section>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="checkout-sidebar">
+          <div class="checkout-sidebar-price-table mt-30">
+            <h5 class="title">Détail prix</h5>
+
+            <div class="total-payable">
+              <div class="payable-price">
+                <p class="value">Prix total:</p>
+                <p class="price" style="font-weight: bold">
+                  {{ totalPrice * quantityTotal }} {{ currency }}
+                </p>
+              </div>
+            </div>
+            <div class="price-table-btn button spin">
+              <nz-spin *ngIf="isLoading === true" nzSimple></nz-spin>
+              <a class="btn btn-alt" (click)="addCheckout()">Paiement</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--====== Checkout Form Steps Part Ends ======-->

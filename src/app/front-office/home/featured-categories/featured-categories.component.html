@@ -1,0 +1,46 @@
+<!-- Start Featured Categories Area -->
+<section class="featured-categories section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2>Categories en vedette</h2>
+          <p>
+            Découvrez nos Catégories en Vedette. 
+            Explorez une sélection exceptionnelle de catégories 
+            soigneusement choisies pour répondre à vos besoins et désirs.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of listFeatured">
+        <!-- Start Single Category -->
+        <div class="single-category">
+          <h3 class="heading">{{ item.productCategory.libelle }}</h3>
+          <ul>
+            <li>
+              <a>{{ item.libelle }}</a>
+            </li>
+            <li>
+              <a
+                class="view-all"
+                routerLink="/category/{{ item.productCategory.id }}"
+                >Voir la catégorie</a
+              >
+            </li>
+          </ul>
+          <div class="images">
+            <img
+              style="height: 170px; width: 170px"
+              src="{{ item.imageName }}"
+              alt="#"
+            />
+          </div>
+        </div>
+        <!-- End Single Category -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Features Area -->

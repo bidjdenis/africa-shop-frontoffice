@@ -1,0 +1,62 @@
+<!-- Start Trending Product Area -->
+<section class="trending-product section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2>Meilleurs Ventes</h2>
+          <p>
+            Explorez notre Collection Élite - Les Favoris de Notre Clientèle
+            Découvrez les joyaux de notre assortiment, les produits qui captivent et enchantent nos clients. </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12" *ngFor="let item of listTending">
+        <!-- Start Single Product -->
+        <div class="single-product">
+          <div class="product-image">
+            <img
+              style="cursor: pointer"
+              src="{{ item.imageName }}"
+              alt="#"
+              style="height: 200px"
+              routerLink="/product-detail/{{ item.id }}"
+            />
+          </div>
+          <div class="product-info" routerLink="/product-detail/{{ item.id }}">
+            <span class="category">{{ item.productCategory.libelle }}</span>
+            <h4 class="title">
+              <a routerLink="/product-detail/{{ item.id }}">{{
+                item.libelle
+              }}</a>
+            </h4>
+            <ul class="review" *ngIf="item.tag !== null">
+              <li *ngFor="let i of getStarArray(item.tag!)">
+                <i class="lni lni-star-filled"></i>
+              </li>
+              <li>
+                <span> {{ item.tag }} étoile(s)</span>
+              </li>
+            </ul>
+            <div class="price">
+              <span>{{ item.price }} {{ item.currency }}</span>
+            </div>
+          </div>
+        </div>
+        <!-- End Single Product -->
+      </div>
+    </div>
+  </div>
+  <!-- End Trending Product Area -->
+  <ng-template #template let-notification>
+    <div class="ant-notification-notice-content">
+      <div>
+        <div class="ant-notification-notice-message">Notification</div>
+        <div class="ant-notification-notice-description">
+          Le produit a été ajouter au panier avec succès !
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</section>

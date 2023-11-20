@@ -1,0 +1,11 @@
+{
+    "pagination": {
+        "greeting": "Bonjour !",
+        "welcome": "Bienvenue sur mon application.",
+      "itemsPerPage": "Éléments par page :",
+      "nextPage": "Page suivante",
+      "previousPage": "Page précédente",
+      "firstPage": "Première page",
+      "lastPage": "Dernière page"
+    }
+  }

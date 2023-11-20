@@ -1,0 +1,109 @@
+<!-- Shopping Cart -->
+<div class="shopping-cart section">
+  <div class="container">
+    <div class="cart-list-head">
+      <!-- Cart List Title -->
+      <div class="cart-list-title">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-12"></div>
+          <div class="col-lg-4 col-md-3 col-12">
+            <p>Nom du produit</p>
+          </div>
+          <div class="col-lg-2 col-md-2 col-12">
+            <p>Quantité</p>
+          </div>
+          <div class="col-lg-2 col-md-2 col-12">
+            <p>prix</p>
+          </div>
+          <div class="col-lg-1 col-md-2 col-12">
+            <p>Supprimé</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Cart List Title -->
+      <!-- Cart Single List list -->
+      <div class="cart-single-list">
+        <div class="row align-items-center" *ngFor="let item of listCart">
+          <div class="col-lg-1 col-md-1 col-12">
+            <a><img src="{{ item.url }}" alt="#" /></a>
+          </div>
+          <div class="col-lg-4 col-md-3 col-12">
+            <h5 class="product-name">
+              <a href="product-details.html"> {{ item.product.libelle }}</a>
+            </h5>
+          </div>
+          <div class="col-lg-2 col-md-2 col-12">
+            <select
+              *ngIf="quantity < 10"
+              class="form-control"
+              id="sorting"
+              [(ngModel)]="item.quantity"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="getQuantity($event, item.product.id!)"
+            >
+              <option
+                *ngFor="let item of qutantiteList"
+                [ngValue]="item.quantite"
+              >
+                {{ item.quantite }}
+              </option>
+            </select>
+
+            <div class="example-input">
+              <input
+                class="form-control"
+                *ngIf="quantity == 10"
+                type="number"
+                nz-input
+                nzSize="large"
+                [(ngModel)]="item.quantity"
+                name="quantity"
+                id="quantity"
+              />
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-2 col-12">
+            <p>{{ item.price }} {{ item.currency }}</p>
+          </div>
+          <div class="col-lg-1 col-md-2 col-12">
+            <a class="remove-item" (click)="removeCart(item.product.id!)"
+              ><i class="lni lni-close"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Single List list -->
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!-- Total Amount -->
+        <div class="total-amount">
+          <div class="row">
+            <div class="col-lg-8 col-md-6 col-12"></div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="right">
+                <ul>
+                  <li class="last">
+                    Prix total<span
+                      >{{ montantTotal * totalQuantity }} {{ currency }}
+                    </span>
+                  </li>
+                </ul>
+                <div class="button">
+                  <a routerLink="/checkout" class="btn" (click)="checkout()"
+                    >Passer la commande</a
+                  >
+                  <a routerLink="/products" class="btn btn-alt"
+                    >Continuer vos courses</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ End Total Amount -->
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ End Shopping Cart -->

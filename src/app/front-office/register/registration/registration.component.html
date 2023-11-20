@@ -1,0 +1,163 @@
+<!-- Start Account Register Area -->
+<div class="account-login section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+        <div class="register-form">
+          <div class="title">
+            <h3> Inscription</h3>
+            <p>
+              L'inscription prend moins d'une minute mais vous donne un contrôle total
+              sur vos commandes.
+            </p>
+          </div>
+          <nz-alert
+            *ngIf="status === 1"
+            nzType="success"
+            nzDescription="{{ message }}"
+            nzShowIcon
+            nzCloseable
+            (nzOnClose)="afterClose()"
+          ></nz-alert>
+          <nz-alert
+            *ngIf="status === 0"
+            nzType="error"
+            nzDescription="{{ message }}"
+            nzShowIcon
+            nzCloseable
+            (nzOnClose)="afterClose()"
+          ></nz-alert>
+          <form class="row" [formGroup]="userForm" nz-form>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-fn">Nom</label>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Erreur sur le champs !">
+                    <input
+                      class="form-control"
+                      nz-input
+                      formControlName="firstname"
+                      type="text"
+                      id="firstname"
+                      pattern="^[^\s][\w\d\s\S]*$"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-ln">prénom</label>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Erreur sur le champs !">
+                    <input
+                      class="form-control"
+                      nz-input
+                      formControlName="name"
+                      type="text"
+                      id="name"
+                      pattern="^[^\s][\w\d\s\S]*$"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-email">Adresse électronique</label>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Erreur sur le champs !">
+                    <input
+                      class="form-control"
+                      type="email"
+                      id="email"
+                      nz-input
+                      formControlName="email"
+                      pattern="^[^\s][\w\d\s\S]*$"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-phone">Numéro de téléphone</label>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Erreur sur le champs !">
+                    <input
+                      class="form-control"
+                      type="text"
+                      id="phonee"
+                      nz-input
+                      formControlName="phone"
+                      pattern="^[^\s][\w\d\s\S]*$"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Erreur sur le champs !">
+                    <input
+                      class="form-control"
+                      type="text"
+                      id="username"
+                      nz-input
+                      formControlName="username"
+                      pattern="^[^\s][\w\d\s\S]*$"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="reg-pass">Mot de passe</label>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Erreur sur le champs !">
+                    <input
+                      class="form-control"
+                      type="password"
+                      id="password"
+                      nz-input
+                      formControlName="password"
+                      pattern="^[^\s][\w\d\s\S]*$"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div class="button spin">
+              <button class="btn" (click)="saveForm(template)">
+                <span
+                  *ngIf="isLoading === true"
+                  class="spinner-grow spinner-grow-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                s'enregistrer
+              </button>
+            </div>
+            <p class="outer-link">
+              Vous avez déja un compte? <a routerLink="/login">Se connecter</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Account Register Area -->
+<ng-template #template let-notification>
+  <div class="ant-notification-notice-content">
+    <div>
+      <div class="ant-notification-notice-message">Notification</div>
+      <div class="ant-notification-notice-description">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</ng-template>
